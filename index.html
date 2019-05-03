@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="my-tiles.js"></script>
+    <title>Web Component</title>
+</head>
+<body>
+    <h1>Web Component</h1>
+    <form name="options">
+        <label>Содержимое: <input type="text" name="content"></label>
+        <p>
+            Расположение:
+            <label><input type="radio" name="layout" value="inline"> inline</label>
+            <label><input type="radio" name="layout" value="column"> column</label>
+        </p>
+        <p>
+            Порядок:
+            <label><input type="radio" name="order" value="direct"> direct</label>
+            <label><input type="radio" name="order" value="reversed"> reversed</label>
+            <label><input type="radio" name="order" value="randomized"> randomized</label>
+        </p>
+    </form>
+    <my-tiles></my-tiles>
+    <script>
+        const form = document.querySelector('form');
+        const myTiles = document.querySelector('my-tiles');
+
+        // При изменении формы задаём соответствующие атрибуты веб-компонента
+        form.addEventListener('input', e => {
+            const name = e.srcElement.name;
+            const value = e.srcElement.value;
+            myTiles.setAttribute(name, value);
+        });
+    </script>
+</body>
+</html>
